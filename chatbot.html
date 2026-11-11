@@ -1,164 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Chat with MediBOT</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediBOT AI Assistant</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-      height: 100vh;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    .chat-container {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 20px;
-      height: 400px;
-      overflow-y: auto;
-    }
-
-    .chat-message {
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      background-color: #333;
-      text-align: left;
-      white-space: pre-line;
-    }
-
-    .chatbot-response {
-      background-color: #00c9ff;
-      color: black;
-    }
-
-    .user-message {
-      background-color: #3a86ff;
-      color: white;
-    }
-
-    input[type="text"] {
-      width: 70%;
-      padding: 10px;
-      border-radius: 25px;
-      border: 1px solid #ccc;
-      margin-top: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background: #00c9ff;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-
-    button:hover {
-      background: #3a86ff;
-    }
+    :root{--navy:#12304a;--teal:#10a7a0;--mint:#e8f7f5;--ink:#193247;--muted:#607487;--line:#dce8ee;--shadow:0 20px 55px rgba(18,48,74,.12)}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f6fafb}.nav{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 1180px)/2))}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;font-size:1.25rem}.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center}.brand-mark svg{width:22px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:600}.nav-links a:hover{color:var(--teal)}.nav-cta{background:var(--navy);color:#fff!important;padding:11px 18px;border-radius:10px}.menu{display:none;background:none;border:0;color:var(--navy)}.shell{max-width:980px;margin:0 auto;padding:52px 24px 70px}.page-heading{text-align:center;margin-bottom:28px}.eyebrow{color:var(--teal);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}.page-heading h1{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.04em;color:var(--navy);margin:13px 0 8px}.page-heading p{color:var(--muted);margin:0}.assistant-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}.chat-container{height:430px;overflow-y:auto;padding:28px;background:linear-gradient(180deg,#f9fcfd,#eef8f7);display:flex;flex-direction:column;gap:14px}.chat-message{max-width:78%;padding:14px 17px;border-radius:16px;white-space:pre-line;text-align:left;line-height:1.5}.chatbot-response{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:4px}.user-message{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}.composer{padding:18px;border-top:1px solid var(--line);background:#fff}.mode-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}.mode-label{font-size:.84rem;color:var(--muted);font-weight:700}.mode-select{padding:10px 13px;border:1px solid var(--line);border-radius:10px;color:var(--navy);background:#fff;font-weight:700}.input-row{display:flex;gap:10px}.input-row input{min-width:0;flex:1;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font:inherit;color:var(--ink);outline:none}.input-row input:focus,.mode-select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(16,167,160,.12)}button{font:inherit;cursor:pointer}.send-button,.voice-button{border:0;border-radius:12px;padding:0 18px;font-weight:800}.send-button{background:var(--teal);color:#fff}.voice-button{background:var(--mint);color:var(--navy)}button:hover{filter:brightness(.96);transform:translateY(-1px)}.disclaimer{display:flex;gap:10px;align-items:flex-start;margin:15px 2px 0;color:var(--muted);font-size:.82rem}.disclaimer svg{flex:0 0 auto;color:var(--teal)}.prediction-card{background:#f8fcfc;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:8px}.prediction-card h3{margin:0 0 10px;color:var(--navy);font-size:1rem}.prediction-item{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;font-size:.9rem}.prediction-item:first-of-type{border-top:0}.score{color:var(--teal);font-weight:800}.recognized{margin-top:12px;color:var(--muted);font-size:.85rem}.error{color:#a63b3b;background:#fff1f1;border-color:#f0caca}@media(max-width:700px){.nav-links{display:none}.menu{display:block}.shell{padding:36px 14px}.chat-container{height:390px;padding:18px}.chat-message{max-width:90%}.input-row{flex-wrap:wrap}.input-row input{flex-basis:100%}.send-button,.voice-button{height:46px;flex:1}}
   </style>
 </head>
 <body>
-  <h1>Welcome to MediBOT</h1>
-
-  <div class="chat-container" id="chatContainer">
-    <!-- Chat messages will appear here -->
-  </div>
-
-  <div>
-    <input type="text" id="userInput" placeholder="Ask me a health-related question..." />
-    <button onclick="sendMessage()">Send</button>
-    <button onclick="startVoiceRecognition()">🎤 Voice</button>
-  </div>
-
+  <nav class="nav"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/><path d="M19 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span>MediBOT</a><div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="chatbot.html">AI Assistant</a><a href="APP.HTML" class="nav-cta">Book an appointment</a></div><button class="menu" aria-label="Open navigation"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></nav>
+  <main class="shell">
+    <header class="page-heading"><span class="eyebrow">MediBOT assistant</span><h1>A calmer way to ask health questions.</h1><p>Use text or voice to start a conversation. For experimental symptom analysis, choose ML Prediction.</p></header>
+    <section class="assistant-card">
+      <div class="chat-container" id="chatContainer"></div>
+      <div class="composer">
+        <div class="mode-row"><label class="mode-label" for="modeSelect">Assistant mode</label><select class="mode-select" id="modeSelect"><option value="chat">Chat</option><option value="predict">ML Prediction</option></select></div>
+        <div class="input-row"><input type="text" id="userInput" placeholder="Ask me a health-related question..." aria-label="Your message"><button class="send-button" onclick="sendMessage()">Send</button><button class="voice-button" onclick="startVoiceRecognition()" aria-label="Start voice input"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-4px"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg> Voice</button></div>
+        <div class="disclaimer" id="predictionDisclaimer" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>This experimental model is not a medical diagnosis. Please consult a qualified healthcare professional.</span></div>
+      </div>
+    </section>
+  </main>
   <script>
-    const chatContainer = document.getElementById('chatContainer');
-    const userInputField = document.getElementById('userInput');
-
-    function appendMessage(message, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('chat-message', sender);
-      messageDiv.textContent = message;
-      chatContainer.appendChild(messageDiv);
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    function speak(text) {
-      const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US'; // You can customize this based on user language
-      synth.speak(utterance);
-    }
-
-    function sendMessage() {
-      const userQuery = userInputField.value.trim();
-      if (!userQuery) return;
-
-      appendMessage(userQuery, 'user-message');
-      userInputField.value = "";
-
-      fetch('http://127.0.0.1:5000/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: userQuery })
-      })
-      .then(res => res.json())
-      .then(data => {
-        appendMessage(data.answer, 'chatbot-response');
-        speak(data.answer);  // 🔊 Speak the bot's answer
-
-        if (data.doctors && data.doctors.length > 0) {
-          let doctorMessage = "👨‍⚕️ Doctor Suggestions:\n";
-          data.doctors.forEach(doc => {
-            doctorMessage += `• ${doc}\n`;
-          });
-          appendMessage(doctorMessage, 'chatbot-response');
-          speak(doctorMessage);  // 🔊 Speak doctor suggestions
-        }
-      })
-      .catch(error => console.error("Error:", error));
-    }
-
-    function startVoiceRecognition() {
-      if (!('webkitSpeechRecognition' in window)) {
-        alert("Your browser doesn't support voice recognition.");
-        return;
-      }
-
-      const recognition = new webkitSpeechRecognition();
-      recognition.lang = "en-US";
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
-
-      recognition.onresult = function(event) {
-        const voiceText = event.results[0][0].transcript;
-        userInputField.value = voiceText;
-        sendMessage();
-      };
-
-      recognition.onerror = function(event) {
-        console.error("Speech recognition error:", event.error);
-      };
-
-      recognition.start();
-    }
+    const chatContainer=document.getElementById('chatContainer'),userInputField=document.getElementById('userInput'),modeSelect=document.getElementById('modeSelect'),predictionDisclaimer=document.getElementById('predictionDisclaimer');
+    function appendMessage(message,sender,html){const messageDiv=document.createElement('div');messageDiv.classList.add('chat-message',sender);if(html)messageDiv.innerHTML=html;else messageDiv.textContent=message;chatContainer.appendChild(messageDiv);chatContainer.scrollTop=chatContainer.scrollHeight}
+    function speechText(text){return text.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,'').replace(/[•→✅⚠️]/g,'').replace(/\s+/g,' ').trim()}
+    function speak(text){const readable=speechText(text);if(!readable||!('speechSynthesis' in window))return;window.speechSynthesis.cancel();window.speechSynthesis.speak(new SpeechSynthesisUtterance(readable))}
+    function renderPrediction(data){if(!data.predictions||!data.predictions.length){appendMessage(data.message||'No prediction was returned.','chatbot-response');return}const items=data.predictions.map((p,i)=>`<div class="prediction-item"><span>${i+1}. ${p.condition}</span><span class="score">${p.model_score}%</span></div>`).join('');const recognized=data.recognized_symptoms.join(', ');const readable=[data.model_scores_label||'Model scores (%)',...data.predictions.map((p,i)=>`${i+1}. ${p.condition}, ${p.model_score} percent`),`Recognized symptoms: ${recognized}`].join('. ');appendMessage('', 'chatbot-response',`<div class="prediction-card"><h3>${data.model_scores_label||'Model scores (%)'}</h3>${items}<div class="recognized"><strong>Recognized symptoms:</strong> ${recognized}</div></div>`);speak(readable)}
+    function sendMessage(){const userQuery=userInputField.value.trim();if(!userQuery){appendMessage('Please enter a message.','chatbot-response');return}appendMessage(userQuery,'user-message');userInputField.value='';const isPrediction=modeSelect.value==='predict';fetch(isPrediction?'/predict':'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:userQuery})}).then(async res=>{const data=await res.json();if(!res.ok)throw new Error(data.error||'The request could not be completed.');return data}).then(data=>{if(isPrediction){renderPrediction(data);return}appendMessage(data.answer,'chatbot-response');speak(data.answer);if(data.doctors&&data.doctors.length){const doctorMessage=`Doctor Suggestions:\n${data.doctors.map(doc=>`• ${doc}`).join('\n')}`;appendMessage(doctorMessage,'chatbot-response');speak(doctorMessage)}}).catch(error=>appendMessage(`Unable to connect: ${error.message}`,'chatbot-response'))}
+    modeSelect.addEventListener('change',()=>{const isPrediction=modeSelect.value==='predict';predictionDisclaimer.hidden=!isPrediction;userInputField.placeholder=isPrediction?'Enter symptoms for an experimental ML prediction...':'Ask me a health-related question...'});
+    userInputField.addEventListener('keydown',event=>{if(event.key==='Enter')sendMessage()});
+    function startVoiceRecognition(){if(!('webkitSpeechRecognition' in window)){appendMessage("Your browser doesn't support voice recognition.",'chatbot-response');return}const recognition=new webkitSpeechRecognition();recognition.lang='en-US';recognition.interimResults=false;recognition.maxAlternatives=1;recognition.onresult=event=>{userInputField.value=event.results[0][0].transcript;sendMessage()};recognition.onerror=event=>appendMessage(`Voice input error: ${event.error}`,'chatbot-response');recognition.start()}
   </script>
 </body>
 </html>

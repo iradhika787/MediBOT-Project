@@ -1,0 +1,25 @@
+{
+  "model": "Logistic Regression",
+  "random_state": 42,
+  "metrics": {
+    "accuracy": 0.9507924726018425,
+    "macro_precision": 0.9448448326269502,
+    "macro_recall": 0.9641557846163906,
+    "macro_f1": 0.9526542991947626,
+    "weighted_f1": 0.9514105153070319,
+    "balanced_accuracy": 0.9641557846163906
+  },
+  "test_records": 22903,
+  "preprocessing": {
+    "original_records": 246945,
+    "exact_duplicate_rows_removed": 57298,
+    "conflicting_symptom_combinations": 12634,
+    "conflicting_records_removed": 32393,
+    "constant_features_removed": 49,
+    "usable_features": 328,
+    "classes_before_support_filter": 738,
+    "minimum_class_count": 50,
+    "final_records": 152685,
+    "final_classes": 393
+  }
+}

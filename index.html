@@ -1,132 +1,55 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to MediBOT</title>
-  <style> 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-      height: 100vh;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .toggle-section {
-      position: relative;
-      height: 300px;
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    .info, .images {
-      position: absolute;
-      width: 100%;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .images img {
-      width: 150px;
-      margin: 0 15px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .info p {
-      font-size: 1.2em;
-      margin: 20px;
-    }
-
-    .hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 1em;
-      border: none;
-      background: #00c9ff;
-      color: #000;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 30px;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #3a86ff;
-      color: #fff;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediBOT | Smarter everyday healthcare support</title>
+  <style>
+    :root{--navy:#12304a;--blue:#1c6e9e;--teal:#10a7a0;--mint:#e8f7f5;--ink:#193247;--muted:#607487;--line:#dce8ee;--shadow:0 20px 55px rgba(18,48,74,.12)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:auto;padding:0 24px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;font-size:1.25rem}
+    .brand-mark{width:38px;height:38px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center}
+    .brand-mark svg{width:22px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:600}.nav-links a:hover{color:var(--teal)}
+    .nav-cta,.button{background:var(--navy);color:#fff!important;padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:700;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+    .nav-cta:hover,.button:hover{background:#1d5579;transform:translateY(-2px)}.menu{display:none;background:none;border:0;color:var(--navy)}
+    .hero{max-width:1180px;margin:0 auto;padding:76px 24px 96px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--teal);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
+    h1{font-size:clamp(2.6rem,5vw,4.7rem);line-height:1.08;letter-spacing:-.05em;color:var(--navy);margin:18px 0}.lead{font-size:1.12rem;color:var(--muted);max-width:560px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}.button.secondary{color:var(--navy)!important;background:var(--mint)}.button.secondary:hover{background:#d4efeb}
+    .hero-visual{position:relative}.hero-visual img{width:100%;height:430px;object-fit:cover;border-radius:28px;box-shadow:var(--shadow);background:var(--mint)}.trust-card{position:absolute;bottom:-24px;left:-24px;background:#fff;padding:18px 20px;border-radius:16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}.trust-icon{color:var(--teal);background:var(--mint);padding:10px;border-radius:12px}.trust-card strong{display:block;color:var(--navy)}.trust-card span{font-size:.82rem;color:var(--muted)}
+    .intro{background:#f7fbfc;padding:28px 24px}.intro-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.intro-card{padding:22px;background:#fff;border:1px solid var(--line);border-radius:16px}.intro-card svg{color:var(--teal);width:25px}.intro-card h3{margin:9px 0 4px;color:var(--navy);font-size:1rem}.intro-card p{margin:0;color:var(--muted);font-size:.9rem}
+    .legacy-toggle{max-width:760px;margin:34px auto 0;min-height:110px;text-align:center;position:relative}.legacy-toggle>div{transition:opacity .5s ease}.legacy-toggle .hidden{opacity:0;pointer-events:none;position:absolute;inset:0}.legacy-toggle .visible{opacity:1}.legacy-toggle img{width:82px;height:82px;object-fit:contain;margin:0 10px}.legacy-toggle p{color:var(--muted);margin:7px 0}
+    footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.86rem}
+    @media(max-width:760px){.nav-links{display:none}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:48px;gap:42px}.hero-visual img{height:310px}.trust-card{left:12px}.intro-grid{grid-template-columns:1fr}h1{font-size:2.8rem}}
   </style>
 </head>
 <body>
-  <h1>Welcome to MediBOT</h1>
-
-  <div class="toggle-section">
-    <div class="images visible" id="imageBlock">
-      <img src="https://cdn-icons-png.flaticon.com/512/3771/3771518.png" alt="AI Chatbot">
-      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" alt="Doctor">
-    </div>
-    <div class="info hidden" id="infoBlock">
-      <p>🤖 Chat with AI: Get answers to health-related questions</p>
-      <p>🕒 Book Appointments: Find doctors based on your symptoms</p>
-      <p>💊 Medicine Reminders: Never miss a tablet with alerts</p>
-    </div>
-  </div>
-
-  <button onclick="location.href='features.html'">Get Started</button>
-
-
-  <script>
-    let isShowingImages = true;
-
-    setInterval(() => {
-      const images = document.getElementById("imageBlock");
-      const info = document.getElementById("infoBlock");
-      if (isShowingImages) {
-        images.classList.remove("visible");
-        images.classList.add("hidden");
-        info.classList.remove("hidden");
-        info.classList.add("visible");
-      } else {
-        images.classList.remove("hidden");
-        images.classList.add("visible");
-        info.classList.remove("visible");
-        info.classList.add("hidden");
-      }
-      isShowingImages = !isShowingImages;
-    }, 10000); // 10 seconds
-  </script>
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/><path d="M19 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span>MediBOT</a>
+    <div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="chatbot.html">AI Assistant</a><a href="APP.HTML" class="nav-cta">Book an appointment</a></div>
+    <button class="menu" aria-label="Open navigation"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </nav>
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg> Digital care, made simple</span>
+        <h1>Health support that fits your day.</h1>
+        <p class="lead">MediBOT brings helpful health conversations, appointment planning, and medicine reminders together in one calm, easy-to-use place.</p>
+        <div class="hero-actions"><a class="button" href="features.html">Explore MediBOT <span>→</span></a><a class="button secondary" href="chatbot.html">Talk to the assistant</a></div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85" alt="Healthcare professional using a tablet" onerror="this.style.display='none'">
+        <div class="trust-card"><span class="trust-icon"><svg width="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>Designed for clarity</strong><span>Simple tools for everyday needs</span></div></div>
+      </div>
+    </section>
+    <section class="intro"><div class="intro-grid">
+      <div class="intro-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.1 9.1 0 0 1-4-.9L3 21l1.9-4.3A8.5 8.5 0 1 1 21 11.5Z"/></svg><h3>Ask health questions</h3><p>Get conversational support through text or voice.</p></div>
+      <div class="intro-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><h3>Plan appointments</h3><p>Organize doctor, hospital, date, and time details.</p></div>
+      <div class="intro-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><h3>Remember medicines</h3><p>Set a timely reminder for your medication schedule.</p></div>
+    </div><div class="legacy-toggle"><div class="images visible" id="imageBlock"><img src="https://cdn-icons-png.flaticon.com/512/3771/3771518.png" alt="AI chatbot illustration" onerror="this.style.display='none'"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" alt="Doctor illustration" onerror="this.style.display='none'"></div><div class="info hidden" id="infoBlock"><p>Chat with AI: Get answers to health-related questions</p><p>Book appointments: Find doctors based on your symptoms</p><p>Medicine reminders: Never miss a tablet with alerts</p></div></div></section>
+  </main>
+  <footer>MediBOT · An experimental healthcare technology experience</footer>
+  <script>let isShowingImages=true;setInterval(()=>{const images=document.getElementById("imageBlock"),info=document.getElementById("infoBlock");if(images&&info){images.classList.toggle("visible",!isShowingImages);images.classList.toggle("hidden",isShowingImages);info.classList.toggle("visible",isShowingImages);info.classList.toggle("hidden",!isShowingImages);isShowingImages=!isShowingImages}},10000);</script>
 </body>
 </html>

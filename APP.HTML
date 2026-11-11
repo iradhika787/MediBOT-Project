@@ -1,193 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Appointment Booking</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book an Appointment | MediBOT</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(-45deg, #1e3c72, #2a5298);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-      width: 400px;
-    }
-
-    label, select, input {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-    }
-
-    input[type="submit"] {
-      background-color: #28a745;
-      color: white;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #218838;
-    }
+    :root{--navy:#12304a;--teal:#10a7a0;--mint:#e8f7f5;--ink:#193247;--muted:#607487;--line:#dce8ee;--shadow:0 20px 55px rgba(18,48,74,.12)}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f6fafb}.nav{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 1180px)/2))}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;font-size:1.25rem}.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center}.brand-mark svg{width:22px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:600}.nav-links a:hover{color:var(--teal)}.nav-cta{background:var(--navy);color:#fff!important;padding:11px 18px;border-radius:10px}.menu{display:none;background:none;border:0;color:var(--navy)}.layout{max-width:1120px;margin:auto;padding:52px 24px 70px;display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}.eyebrow{color:var(--teal);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}.intro h1{font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.08;letter-spacing:-.05em;color:var(--navy);margin:15px 0}.intro p{color:var(--muted)}.intro-image{margin-top:28px;width:100%;height:220px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow);background:var(--mint)}.form-container{background:#fff;border:1px solid var(--line);padding:30px;border-radius:22px;box-shadow:var(--shadow)}.form-container h2{color:var(--navy);margin:0 0 22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.86rem;color:var(--navy)}select,input{font:inherit;width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:#fff}select:focus,input:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 3px rgba(16,167,160,.12)}input[type=submit]{grid-column:1/-1;background:var(--teal);color:#fff;font-weight:800;cursor:pointer;border:0;margin-top:5px}.confirmation{margin-top:20px;padding:16px;border-radius:12px;background:var(--mint);color:var(--navy);line-height:1.6}.confirmation:empty{display:none}@media(max-width:800px){.nav-links{display:none}.menu{display:block}.layout{grid-template-columns:1fr;gap:30px;padding-top:36px}.form-grid{grid-template-columns:1fr}.field.full,input[type=submit]{grid-column:auto}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Book Appointment</h2>
-    <form id="appointmentForm">
-      <label for="disease">Select Disease:</label>
-      <select id="disease" required>
-        <option value="">--Select--</option>
-        <option value="Cardiology">Cardiology</option>
-        <option value="Dermatology">Dermatology</option>
-        <option value="Neurology">Neurology</option>
-      </select>
-
-      <label for="doctor">Available Doctor:</label>
-      <select id="doctor" required></select>
-
-      <label for="hospital">Nearby Hospital:</label>
-      <select id="hospital" required></select>
-
-      <label for="date">Date:</label>
-      <input type="date" id="date" required>
-
-      <label for="time">Time:</label>
-      <input type="time" id="time" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" required>
-
-      <input type="submit" value="Book Appointment">
-    </form>
-    <div id="confirmation" style="margin-top:20px;"></div>
-  </div>
-
+  <nav class="nav"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/><path d="M19 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span>MediBOT</a><div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="chatbot.html">AI Assistant</a><a href="APP.HTML" class="nav-cta">Book an appointment</a></div><button class="menu" aria-label="Open navigation"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></nav>
+  <main class="layout"><section class="intro"><span class="eyebrow">Plan your next visit</span><h1>Make time for the care you need.</h1><p>Choose a specialty, doctor, hospital, and convenient time. Your appointment details will be summarized below when you submit.</p><img class="intro-image" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" alt="Bright hospital interior" onerror="this.style.display='none'"></section>
+    <section class="form-container"><h2>Book Appointment</h2><form id="appointmentForm"><div class="form-grid">
+      <div class="field full"><label for="disease">Select Disease:</label><select id="disease" required><option value="">--Select--</option><option value="Cardiology">Cardiology</option><option value="Dermatology">Dermatology</option><option value="Neurology">Neurology</option></select></div>
+      <div class="field"><label for="doctor">Available Doctor:</label><select id="doctor" required></select></div><div class="field"><label for="hospital">Nearby Hospital:</label><select id="hospital" required></select></div>
+      <div class="field"><label for="date">Date:</label><input type="date" id="date" required></div><div class="field"><label for="time">Time:</label><input type="time" id="time" required></div>
+      <div class="field"><label for="email">Email:</label><input type="email" id="email" required></div><div class="field"><label for="phone">Phone:</label><input type="tel" id="phone" required></div>
+      <input type="submit" value="Book Appointment"></div></form><div id="confirmation" class="confirmation"></div></section>
+  </main>
   <script>
-    const doctorData = {
-      "Cardiology": ["Dr. A Sharma", "Dr. B Patel"],
-      "Dermatology": ["Dr. C Nair", "Dr. D Gupta"],
-      "Neurology": ["Dr. E Rao", "Dr. F Iyer"]
-    };
-
-    const hospitalData = {
-      "Cardiology": ["HeartCare Clinic", "City Cardio Center"],
-      "Dermatology": ["SkinGlow Hospital", "DermaClinic"],
-      "Neurology": ["NeuroLife Hospital", "BrainCare Center"]
-    };
-
-    const diseaseSelect = document.getElementById("disease");
-    const doctorSelect = document.getElementById("doctor");
-    const hospitalSelect = document.getElementById("hospital");
-
-    diseaseSelect.addEventListener("change", function () {
-      const selectedDisease = this.value;
-      doctorSelect.innerHTML = "";
-      hospitalSelect.innerHTML = "";
-
-      if (doctorData[selectedDisease]) {
-        doctorData[selectedDisease].forEach(doc => {
-          const opt = document.createElement("option");
-          opt.value = doc;
-          opt.textContent = doc;
-          doctorSelect.appendChild(opt);
-        });
-      }
-
-      if (hospitalData[selectedDisease]) {
-        hospitalData[selectedDisease].forEach(hosp => {
-          const opt = document.createElement("option");
-          opt.value = hosp;
-          opt.textContent = hosp;
-          hospitalSelect.appendChild(opt);
-        });
-      }
-    });
-
-    document.getElementById("appointmentForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const disease = diseaseSelect.value;
-      const doctor = doctorSelect.value;
-      const hospital = hospitalSelect.value;
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const email = document.getElementById("email").value;
-      const phone = document.getElementById("phone").value;
-
-      const confirmation = document.getElementById("confirmation");
-      const appointmentDateTime = new Date(`${date}T${time}`);
-
-      confirmation.innerHTML = `
-        <p>✅ Appointment Booked!</p>
-        <p><strong>Disease:</strong> ${disease}</p>
-        <p><strong>Doctor:</strong> ${doctor}</p>
-        <p><strong>Hospital:</strong> ${hospital}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p id="reminder"><strong>⏳ Time Left: </strong><span id="countdown">Calculating...</span></p>
-      `;
-
-      const countdownEl = document.getElementById("countdown");
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = appointmentDateTime - now;
-
-        if (diff <= 0) {
-          countdownEl.textContent = "⏰ It's time for your appointment!";
-          clearInterval(timer);
-          alert("⏰ Reminder: It's time for your appointment with " + doctor + " at " + hospital + "!");
-
-          // Optional: Browser Notification
-          if (Notification.permission === "granted") {
-            new Notification("Appointment Reminder", {
-              body: `Time for your appointment with ${doctor} at ${hospital}!`,
-              icon: "https://cdn-icons-png.flaticon.com/512/2598/2598711.png"
-            });
-          }
-          return;
-        }
-
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        countdownEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-      }
-
-      updateCountdown();
-      const timer = setInterval(updateCountdown, 1000);
-
-      // Ask Notification permission
-      if ("Notification" in window && Notification.permission !== "granted") {
-        Notification.requestPermission();
-      }
-    });
+    const doctorData={"Cardiology":["Dr. A Sharma","Dr. B Patel"],"Dermatology":["Dr. C Nair","Dr. D Gupta"],"Neurology":["Dr. E Rao","Dr. F Iyer"]},hospitalData={"Cardiology":["HeartCare Clinic","City Cardio Center"],"Dermatology":["SkinGlow Hospital","DermaClinic"],"Neurology":["NeuroLife Hospital","BrainCare Center"]},diseaseSelect=document.getElementById("disease"),doctorSelect=document.getElementById("doctor"),hospitalSelect=document.getElementById("hospital");
+    diseaseSelect.addEventListener("change",function(){const selectedDisease=this.value;doctorSelect.innerHTML="";hospitalSelect.innerHTML="";if(doctorData[selectedDisease])doctorData[selectedDisease].forEach(doc=>{const opt=document.createElement("option");opt.value=doc;opt.textContent=doc;doctorSelect.appendChild(opt)});if(hospitalData[selectedDisease])hospitalData[selectedDisease].forEach(hosp=>{const opt=document.createElement("option");opt.value=hosp;opt.textContent=hosp;hospitalSelect.appendChild(opt)})});
+    document.getElementById("appointmentForm").addEventListener("submit",function(e){e.preventDefault();const disease=diseaseSelect.value,doctor=doctorSelect.value,hospital=hospitalSelect.value,date=document.getElementById("date").value,time=document.getElementById("time").value,email=document.getElementById("email").value,phone=document.getElementById("phone").value,confirmation=document.getElementById("confirmation"),appointmentDateTime=new Date(`${date}T${time}`);confirmation.innerHTML=`<strong>Appointment Booked!</strong><br><strong>Disease:</strong> ${disease}<br><strong>Doctor:</strong> ${doctor}<br><strong>Hospital:</strong> ${hospital}<br><strong>Date:</strong> ${date}<br><strong>Time:</strong> ${time}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}<p id="reminder"><strong>Time Left:</strong> <span id="countdown">Calculating...</span></p>`;const countdownEl=document.getElementById("countdown");let timer;function updateCountdown(){const now=new Date,diff=appointmentDateTime-now;if(diff<=0){countdownEl.textContent="It's time for your appointment!";if(timer)clearInterval(timer);alert("Reminder: It's time for your appointment with "+doctor+" at "+hospital+"!");if("Notification"in window&&Notification.permission==="granted")new Notification("Appointment Reminder",{body:`Time for your appointment with ${doctor} at ${hospital}!`,icon:"https://cdn-icons-png.flaticon.com/512/2598/2598711.png"});return}const hours=Math.floor(diff/3600000),minutes=Math.floor(diff%3600000/60000),seconds=Math.floor(diff%60000/1000);countdownEl.textContent=`${hours}h ${minutes}m ${seconds}s`}updateCountdown();timer=setInterval(updateCountdown,1000);if("Notification"in window&&Notification.permission!=="granted")Notification.requestPermission()});
   </script>
 </body>
 </html>

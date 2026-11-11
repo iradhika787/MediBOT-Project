@@ -1,147 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Medicine Reminder</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Reminder | MediBOT</title>
   <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    body {
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .form-container {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #fff;
-      width: 350px;
-      text-align: center;
-    }
-
-    input[type="text"],
-    input[type="date"],
-    input[type="time"],
-    input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-    }
-
-    input[type="submit"] {
-      background-color: #28a745;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #218838;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    #countdown {
-      margin-top: 15px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+    :root{--navy:#12304a;--teal:#10a7a0;--mint:#e8f7f5;--ink:#193247;--muted:#607487;--line:#dce8ee;--shadow:0 20px 55px rgba(18,48,74,.12)}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f6fafb}.nav{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 1180px)/2))}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;font-size:1.25rem}.brand-mark{width:38px;height:38px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center}.brand-mark svg{width:22px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:600}.nav-links a:hover{color:var(--teal)}.nav-cta{background:var(--navy);color:#fff!important;padding:11px 18px;border-radius:10px}.menu{display:none;background:none;border:0;color:var(--navy)}.layout{max-width:1040px;margin:auto;padding:58px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}.eyebrow{color:var(--teal);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}.intro h1{font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.08;letter-spacing:-.05em;color:var(--navy);margin:15px 0}.intro p{color:var(--muted)}.intro-image{width:100%;height:300px;object-fit:cover;border-radius:22px;box-shadow:var(--shadow);background:var(--mint);margin-top:24px}.form-container{background:#fff;border:1px solid var(--line);padding:30px;border-radius:22px;box-shadow:var(--shadow)}.form-container h2{color:var(--navy);margin:0 0 22px}label{font-weight:700;font-size:.86rem;color:var(--navy);display:block;margin:14px 0 6px}input{font:inherit;width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;color:var(--ink)}input:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 3px rgba(16,167,160,.12)}input[type=submit]{background:var(--teal);color:#fff;font-weight:800;cursor:pointer;border:0;margin-top:12px}#countdown{margin-top:20px;padding:14px;border-radius:12px;background:var(--mint);color:var(--navy);font-weight:700;min-height:20px}@media(max-width:800px){.nav-links{display:none}.menu{display:block}.layout{grid-template-columns:1fr;padding-top:36px;gap:30px}.intro-image{height:230px}}
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Medicine Reminder</h2>
-    <form id="reminderForm">
-      <label for="medicine">Medicine Name:</label>
-      <input type="text" name="medicine" required>
-
-      <label for="date">Date:</label>
-      <input type="date" name="date" required>
-
-      <label for="time">Time:</label>
-      <input type="time" name="time" required>
-
-      <input type="submit" value="Set Reminder">
-    </form>
-    <div id="countdown"></div>
-  </div>
-
+  <nav class="nav"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/><path d="M19 5a2 2 0 0 1 2 2v10a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span>MediBOT</a><div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="chatbot.html">AI Assistant</a><a href="APP.HTML" class="nav-cta">Book an appointment</a></div><button class="menu" aria-label="Open navigation"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></nav>
+  <main class="layout"><section class="intro"><span class="eyebrow">Stay on schedule</span><h1>Keep your routine close at hand.</h1><p>Set a medicine reminder and MediBOT will keep the countdown visible until it is time to take your medicine.</p><img class="intro-image" src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80" alt="Medicine capsules and healthcare supplies" onerror="this.style.display='none'"></section>
+    <section class="form-container"><h2>Medicine Reminder</h2><form id="reminderForm"><label for="medicine">Medicine Name:</label><input type="text" name="medicine" id="medicine" required><label for="date">Date:</label><input type="date" name="date" id="date" required><label for="time">Time:</label><input type="time" name="time" id="time" required><input type="submit" value="Set Reminder"></form><div id="countdown"></div></section>
+  </main>
   <script>
-    let reminderTime = null;
-    let reminderName = "";
-    let hasAlerted = false;
-
-    document.getElementById("reminderForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const medicine = document.querySelector("input[name='medicine']").value;
-      const date = document.querySelector("input[name='date']").value;
-      const time = document.querySelector("input[name='time']").value;
-
-      reminderTime = new Date(`${date}T${time}`);
-      reminderName = medicine;
-      hasAlerted = false;
-
-      alert(`✅ Reminder set for ${medicine} at ${time} on ${date}`);
-    });
-
-    function formatTimeLeft(ms) {
-      const totalSeconds = Math.floor(ms / 1000);
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      return `${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    setInterval(() => {
-      const countdown = document.getElementById("countdown");
-      if (!reminderTime) {
-        countdown.textContent = "";
-        return;
-      }
-
-      const now = new Date();
-      const diff = reminderTime - now;
-
-      if (diff > 0) {
-        countdown.textContent = `⏳ Time Left: ${formatTimeLeft(diff)}`;
-      } else {
-        countdown.textContent = `💊 It's time to take your medicine: ${reminderName}`;
-
-        if (!hasAlerted) {
-          alert(`💊 It's time to take your medicine: ${reminderName}`);
-          hasAlerted = true;
-          setTimeout(() => {
-            hasAlerted = false;
-          }, 60000); // reset alert flag after 1 minute
-        }
-      }
-    }, 1000); // update every second
+    let reminderTime=null,reminderName="",hasAlerted=false;document.getElementById("reminderForm").addEventListener("submit",function(e){e.preventDefault();const medicine=document.querySelector("input[name='medicine']").value,date=document.querySelector("input[name='date']").value,time=document.querySelector("input[name='time']").value;reminderTime=new Date(`${date}T${time}`);reminderName=medicine;hasAlerted=false;alert(`Reminder set for ${medicine} at ${time} on ${date}`)});function formatTimeLeft(ms){const totalSeconds=Math.floor(ms/1000),hours=Math.floor(totalSeconds/3600),minutes=Math.floor(totalSeconds%3600/60),seconds=totalSeconds%60;return `${hours}h ${minutes}m ${seconds}s`}setInterval(()=>{const countdown=document.getElementById("countdown");if(!reminderTime){countdown.textContent="";return}const diff=reminderTime-new Date;if(diff>0)countdown.textContent=`Time Left: ${formatTimeLeft(diff)}`;else{countdown.textContent=`It's time to take your medicine: ${reminderName}`;if(!hasAlerted){alert(`It's time to take your medicine: ${reminderName}`);hasAlerted=true;setTimeout(()=>{hasAlerted=false},60000)}}},1000);
   </script>
 </body>
 </html>
